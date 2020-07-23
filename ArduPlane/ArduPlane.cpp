@@ -24,6 +24,15 @@
 
 #define SCHED_TASK(func, rate_hz, max_time_micros) SCHED_TASK_CLASS(Plane, &plane, func, rate_hz, max_time_micros)
 
+// Original vars
+// #define TARGET_LAT  -35.35784591
+// #define TARGET_LON -149.15884321
+
+// As ardupilot wants them
+#define TARGET_LAT -3535784591
+#define TARGET_LON 14915884321
+#define DISTANCE_TO_TARGET_WHEN_SWITCH_TO_AUTO 100
+
 
 /*
   scheduler table - all regular tasks are listed here, along with how
@@ -402,6 +411,29 @@ void Plane::update_GPS_10Hz(void)
     }
 
     calc_gndspeed_undershoot();
+
+     if(current_loc.lat == 0 || current_loc.lng == 0)
+	    return;
+
+    if(ahrs.home_is_locked())
+        return;
+
+    // TODO: ADD ALT CHECK
+    if(current_loc.relative_alt < 1) {
+        gcs().send_text(MAV_SEVERITY_DEBUG, "not high enough, %f", relative_altitude);
+        return;
+    }
+
+    if (current_loc.get_distance(ahrs.get_home()) < DISTANCE_TO_TARGET_WHEN_SWITCH_TO_AUTO)
+    {
+        // Dist in meters
+        gcs().send_text(MAV_SEVERITY_DEBUG, "SWEET HOME lat: %ld, lon: %ld", current_loc.lat, current_loc.lng);
+
+        if (control_mode != &mode_auto)
+        {
+            set_mode(Mode::AUTO, ModeReason::UNKNOWN);
+        }
+    }
 }
 
 /*
