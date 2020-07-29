@@ -444,7 +444,7 @@ void Plane::update_GPS_10Hz(void)
     if (current_loc.lat == 0 || current_loc.lng == 0)
         return;
 
-    // TODO: ADD ALT CHECK
+    // TODO: ADD ALT CHECK AND FIND COORECT VARIABLE FOR ALT READING
     // if(current_loc.terrain_alt < ALT_WHEN_SWITCH_TO_AUTO) {
     // gcs().send_text(MAV_SEVERITY_DEBUG, "not high enough, %ld", current_loc.terrain_alt);
     // return;
