@@ -5,7 +5,7 @@ Simplified installation guide
 ### Installing packages
 
 ```bash
-pikaur -S arm-none-eabi-bin dfu-utils
+pikaur -S arm-none-eabi-bin dfu-util
 ```
 
 
