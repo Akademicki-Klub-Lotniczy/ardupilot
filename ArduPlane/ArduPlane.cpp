@@ -31,13 +31,8 @@
 // As ardupilot wants them
 #define TARGET_LAT -3535784591
 #define TARGET_LON 14915884321
-<<<<<<< HEAD
 #define DISTANCE_TO_TARGET_WHEN_SWITCH_TO_AUTO 90
 #define ALT_WHEN_SWITCH_TO_AUTO 20
-=======
-#define DISTANCE_TO_TARGET_WHEN_SWITCH_TO_AUTO 100
-
->>>>>>> 3ca764099f88ced71dcdfdc10a2c4ee7b189b770
 
 /*
   scheduler table - all regular tasks are listed here, along with how
@@ -454,7 +449,11 @@ void Plane::update_GPS_10Hz(void)
 
     // This function returns the nearest rally point, although it returns it
     // in a special RallyLocation object
-    rally.find_nearest_rally_point(current_loc, nearest_rally_location_rally_format);
+    if (!rally.find_nearest_rally_point(current_loc, nearest_rally_location_rally_format))
+    {
+        gcs().send_text(MAV_SEVERITY_DEBUG, "No rally points defined!");
+        return;
+    }
 
     // So i'm converting it into a normal location
     Location nearest_rally_location = rally.rally_location_to_location(nearest_rally_location_rally_format);
