@@ -5,8 +5,37 @@ Simplified installation guide
 ### Installing packages
 
 ```bash
-pikaur -S arm-none-eabi-bin dfu-util
+pikaur -S arm-none-eabi-bin dfu-util apm_planner-bin
 ```
+
+### Building ardupilot
+
+#### See boards list
+
+```bash
+./waf list_boards
+```
+
+#### Configure the board
+
+```bash
+./waf configure --board <board name>
+```
+
+#### Build
+
+```bash
+./waf plane -j4
+```
+
+A few notes to the command above:
+- It builds the **ArduPlane**, not ArduRover nor ArduCopter
+- It uses 4 threads (if your CPU has, say, 8, use `-j8` instead)
+
+#### Upload
+
+- Plug in the glider (without battery, just USB power)
+- `./waf plane --upload`
 
 
 # ArduPilot Project
