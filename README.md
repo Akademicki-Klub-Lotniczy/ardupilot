@@ -1,5 +1,13 @@
 **Ardupilot Version modified for SAE 2021, used for autonomous gliders** 
 
+Simplified installation guide
+
+### Installing packages
+
+```bash
+pikaur -S arm-none-eabi-bin dfu-utils
+```
+
 
 # ArduPilot Project
 
