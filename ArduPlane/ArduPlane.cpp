@@ -31,8 +31,13 @@
 // As ardupilot wants them
 #define TARGET_LAT -3535784591
 #define TARGET_LON 14915884321
+<<<<<<< HEAD
 #define DISTANCE_TO_TARGET_WHEN_SWITCH_TO_AUTO 90
 #define ALT_WHEN_SWITCH_TO_AUTO 20
+=======
+#define DISTANCE_TO_TARGET_WHEN_SWITCH_TO_AUTO 100
+
+>>>>>>> 3ca764099f88ced71dcdfdc10a2c4ee7b189b770
 
 /*
   scheduler table - all regular tasks are listed here, along with how

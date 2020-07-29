@@ -1,3 +1,43 @@
+**Ardupilot Version modified for SAE 2021, used for autonomous gliders** 
+
+Simplified installation guide
+
+### Installing packages
+
+```bash
+pikaur -S arm-none-eabi-bin dfu-util apm_planner-bin
+```
+
+### Building ardupilot
+
+#### See boards list
+
+```bash
+./waf list_boards
+```
+
+#### Configure the board
+
+```bash
+./waf configure --board <board name>
+```
+
+#### Build
+
+```bash
+./waf plane -j4
+```
+
+A few notes to the command above:
+- It builds the **ArduPlane**, not ArduRover nor ArduCopter
+- It uses 4 threads (if your CPU has, say, 8, use `-j8` instead)
+
+#### Upload
+
+- Plug in the glider (without battery, just USB power)
+- `./waf plane --upload`
+
+
 # ArduPilot Project
 
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ArduPilot/ardupilot?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
