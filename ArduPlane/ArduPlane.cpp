@@ -465,6 +465,7 @@ void Plane::update_GPS_10Hz(void)
 
         if (control_mode != &mode_auto)
         {
+            gcs().send_text(MAV_SEVERITY_DEBUG, "Switching to auto");
             set_mode(Mode::AUTO, ModeReason::UNKNOWN);
         }
     }
@@ -472,6 +473,8 @@ void Plane::update_GPS_10Hz(void)
     {
         if (control_mode != &mode_manual)
         {
+
+            gcs().send_text(MAV_SEVERITY_DEBUG, "Too far from rally point, switching to manual");
             set_mode(Mode::MANUAL, ModeReason::UNKNOWN);
         }
     }
