@@ -50,7 +50,7 @@ Rally points can be set using MavProxy, remember to launch it with `--map` param
 
 You can download them with `rally fetch` and `rally save`.
 
-The best way to create waypoints is through `apm_planner` or `mission planner`. The interface is easy af.
+The best way to create waypoints is through `apm_planner` or `mission planner`. The gui is easy to use, you'll manage.
 
 # ArduPilot Project
 
