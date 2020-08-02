@@ -16,7 +16,7 @@ pikaur -S arm-none-eabi-bin dfu-util apm_planner-bin
 ./waf list_boards
 ```
 
-#### Configure the board
+#### Configure the board (we're using KakuteF7)
 
 ```bash
 ./waf configure --board <board name>
@@ -34,9 +34,23 @@ A few notes to the command above:
 
 #### Upload
 
-- Plug in the glider (without battery, just USB power)
 - `./waf plane --upload`
+- Plug in the glider (without battery, just USB power)
 
+#### Params, waypoints, rally
+
+You'll need 3 files to configure the glider's behaviour:
+
+- Params (ardupilot settings, peripherals setup, etc)
+- Waypoints (flight plan)
+- Rally point (point that triggers switching to `AUTO` mode)
+
+Params are located at `params_kakuta`. They can be loaded using `param load <params file>` in MavProxy.
+Rally points can be set using MavProxy, remember to launch it with `--map` parameter, then right click on the map > rally > add.
+
+You can download them with `rally fetch` and `rally save`.
+
+The best way to create waypoints is through `apm_planner` or `mission planner`. The interface is easy af.
 
 # ArduPilot Project
 
