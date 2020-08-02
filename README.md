@@ -52,6 +52,13 @@ You can download them with `rally fetch` and `rally save`.
 
 The best way to create waypoints is through `apm_planner` or `mission planner`. The gui is easy to use, you'll manage.
 
+#### Learning resources
+
+https://ardupilot.org/plane/docs/guide-elevon-plane.html
+
+https://ardupilot.org/plane/docs/rc-throw-trim.html
+
+
 # ArduPilot Project
 
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ArduPilot/ardupilot?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
