@@ -463,7 +463,7 @@ void Plane::update_GPS_10Hz(void)
         // Dist in meters
         // gcs().send_text(MAV_SEVERITY_DEBUG, "SWEET HOME lat: %d, lon: %d, heigth: %f", current_loc.lat, current_loc.lng, relative_altitude);
 
-        if (control_mode != &mode_auto)
+        if (control_mode == &mode_manual)
         {
             gcs().send_text(MAV_SEVERITY_DEBUG, "Switching to auto");
             set_mode(Mode::AUTO, ModeReason::UNKNOWN);
